@@ -1,0 +1,4 @@
+0.5
+  - a kalkulátor és a jelentésíró két külön script-re bontása
+  - előkészületek a jelentésíró layout elkészítésére
+  - log szöveg néha nem tünt el - fixálva
