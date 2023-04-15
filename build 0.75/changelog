@@ -7,4 +7,4 @@
     - txt fileba menteni az outputot
     - txt fileba menteni a kalkulált percet, majd azt jelentés írásnál beolvasni
   - kalkulátorban semmi nem változott
-  - kalkulátor todo: semmire való kommentek eltüntetése
+  - kalkulátor todo: semmire való kommentek eltüntetése, sok minden más is feleslegesen van benne, a régi elképzelés miatt (egy scriptben a jelentésíró és kalkulátor)
