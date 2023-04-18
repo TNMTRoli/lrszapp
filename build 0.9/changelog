@@ -1,0 +1,5 @@
+0.9
+  - teljesen működik a jelentésíró és a kalkulátor is
+  - a scriptek még tele vannak dolgokkal, amik nem kellenek (pl semmire se való kommentek, egy-két variable, stb)
+  - már teljesen használható az app, 1-2 kényelmi funkció hiányzik belőle (jó lenne az egészet 1 exe fileba rakni, 1.0-ra biztos olyan lesz)
+    - egy-két funkció majd csak a teljes release után lesz kész
