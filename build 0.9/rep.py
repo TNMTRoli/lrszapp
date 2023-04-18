@@ -3,55 +3,6 @@ import webbrowser as wb
 import subprocess
 from datetime import date
 
-#[CENTER][IMG width="495px"]https://kepkuldes.com/images/831043a8837a1041c516f1ce9873b73a.png[/IMG]
-#[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Teljes név: [/B][/FONT][/COLOR][/SIZE]
-#[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]
-#
-#[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Rendfokozat: [/B][/FONT][/COLOR][/SIZE]
-#[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]
-#
-#[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Beosztás: [/B][/FONT][/COLOR][/SIZE]
-#[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]
-#
-#[IMG]https://kepkuldes.com/images/26590e0284c27766c551bd01459e305c.png[/IMG]
-#[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Pilóta: [/B][/FONT][/COLOR][/SIZE]
-#[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]
-#
-#[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Másodpilóta: [/B][/FONT][/COLOR][/SIZE]
-#[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]
-#
-#[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Kísérő: [/B][/FONT][/COLOR][/SIZE]
-#[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]
-#
-#[IMG]https://kepkuldes.com/images/26590e0284c27766c551bd01459e305c.png[/IMG]
-#[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Egységszám: [/B][/FONT][/COLOR][/SIZE]
-#[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]
-#
-#[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Lajstromszám: [/B][/FONT][/COLOR][/SIZE]
-#[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]
-#
-#[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Felszállás helye és ideje: [/B][/FONT][/COLOR][/SIZE]
-#[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz
-#xxxx.xx.xx xx:xx[/SIZE][/I][/COLOR]
-#
-#[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Leszállás helye és ideje: [/B][/FONT][/COLOR][/SIZE]
-#[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz
-#xxxx.xx.xx xx:xx[/SIZE][/I][/COLOR]
-#
-#[IMG]https://kepkuldes.com/images/26590e0284c27766c551bd01459e305c.png[/IMG]
-#[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Repülés típusa: [/B][/FONT][/COLOR][/SIZE]
-#[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]
-#
-#[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Repült percek: [/B][/FONT][/COLOR][/SIZE]
-#[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]
-#
-#[IMG]https://kepkuldes.com/images/26590e0284c27766c551bd01459e305c.png[/IMG]
-#[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Légi járőrszolgálat részletes leírása: [/B][/FONT][/COLOR][/SIZE]
-#[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE][/CENTER]
-#
-#[RIGHT][FONT=book antiqua][COLOR=rgb(204, 204, 204)][SIZE=5]Aláírás:[/SIZE][/COLOR][/FONT]
-#[FONT=Brush Script MT][SIZE=5][COLOR=#009fd4][I]Válasz[/I][/COLOR][/SIZE][/FONT][/RIGHT]
-
 ver = '0.9'
 
 colors = {'grey':'#23272a', 'green-b':'#3cb882', 'madebywsd':'#3c4043', 'green-b-not-available':'#8cb8a4', 'debug':'#23272a'} # szinek :3
@@ -164,18 +115,25 @@ def logiras(nev, rendfok, beoszt, pilota, masod, kisero, nr, start, end, type, m
     else:
         var = 'Helytelen egységszám! Lehetséges értékek: "CH1", "CH2", "CH3". (Idézőjel nélkül)'
         return var
-    
+
+    masod_ = ''
+    kisero_ = ''
+
     if masod == '':
-        masodpil = '-'
+        masod_ = '-'
+    else:
+        masod_ = masod
 
     if kisero == '':
         kisero_ = '-'
+    else:
+        kisero_ = kisero
 
     var = minta['nev'].replace("Válasz", nev) + \
     minta['rendfok'].replace("Válasz", rendfok) + \
     minta['beoszt'].replace("Válasz", beoszt) + \
     minta['pilota'].replace("Válasz", pilota) + \
-    minta['masod'].replace("Válasz", masodpil) + \
+    minta['masod'].replace("Válasz", masod_) + \
     minta['kisero'].replace("Válasz", kisero_) + \
     minta['nr'].replace("Válasz", nr) + \
     minta['lajstrom'].replace("Válasz", lajstromszam) + \
@@ -185,12 +143,8 @@ def logiras(nev, rendfok, beoszt, pilota, masod, kisero, nr, start, end, type, m
     minta['min'].replace("Válasz", minut) + \
     minta['detail'].replace("Válasz", detail) + \
     minta['signature'].replace("Válasz", nev)
-    
 
     return var
-
-
-
 
 layoutRep = [
     # ----------------------------- FŐ, FELSŐ RÉSZ, Ő NEM FOG VÁLTOZNI MAJD -----------------------------
@@ -319,10 +273,8 @@ while True:
         cmd = ["python", "app.py"]
         subprocess.Popen(cmd, creationflags=subprocess.CREATE_NO_WINDOW)
 
-    if event == '-OUTPUT_BUT-': #def logiras(nev, rendfok, beoszt, pilota, masod, kisero, nr, start, end, type, min, detail):
-        #-NAME- -PILOT- -START- -RANK- -COPILOT- -END- -POSITION- -KISERO- -NR- -MIN- -TYPE-
-        var = logiras(values['-NAME-'], values['-RANK-'], values['-POSITION-'], values['-PILOT-'], values['-COPILOT-'], values['-KISERO-'] \
-                , values['-NR-'], values['-START-'], values['-END-'], values['-TYPE-'], values['-MIN-'], values['-DETAIL-'])
+    if event == '-OUTPUT_BUT-':
+        var = logiras(values['-NAME-'], values['-RANK-'], values['-POSITION-'], values['-PILOT-'], values['-COPILOT-'], values['-KISERO-'], values['-NR-'], values['-START-'], values['-END-'], values['-TYPE-'], values['-MIN-'], values['-DETAIL-'])
 
         mw['-OUTPUTBOX-'].update(var)
     if event == 'WSD':
