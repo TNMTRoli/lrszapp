@@ -1,5 +1,3 @@
-# majd kell jobb kommenteles, fontos megjegyezni való!!!
-# ja es az anime nem cringe csak rossz sztereotipiak terjednek a weebekrol, not my problem honestly
 # coded by WSD a román
 
 import PySimpleGUI as sg
