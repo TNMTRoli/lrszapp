@@ -3,12 +3,12 @@ import webbrowser as wb
 import subprocess
 from datetime import date
 
-ver = '1.0alpha'
+ver = '1.1'
 
 colors = {'grey':'#23272a', 'green-b':'#3cb882', 'madebywsd':'#3c4043', 'green-b-not-available':'#8cb8a4', 'debug':'#23272a'} # szinek :3
 
 minta = {
-    'nev':   '[CENTER][IMG width="495px"]https://kepkuldes.com/images/831043a8837a1041c516f1ce9873b73a.png[/IMG]' + \
+    'nev':   '[CENTER][IMG width="495px"]https://i.postimg.cc/J4PH8HD8/rep-l-si-napl.png[/IMG]' + \
              '\n[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Teljes név: [/B][/FONT][/COLOR][/SIZE]' + \
              '\n[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]\n\n',
 
@@ -18,7 +18,7 @@ minta = {
     'beoszt':'[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Beosztás: [/B][/FONT][/COLOR][/SIZE]' + \
              '\n[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]\n\n',
     
-    'pilota':'[IMG]https://kepkuldes.com/images/26590e0284c27766c551bd01459e305c.png[/IMG]' + \
+    'pilota':'[IMG]https://i.postimg.cc/9ffvkK3V/lrsz-vonal-jelv-nnyel.png[/IMG]' + \
              '\n[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Pilóta: [/B][/FONT][/COLOR][/SIZE]' + \
              '\n[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]\n\n',
     
@@ -28,7 +28,7 @@ minta = {
     'kisero':'[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Kísérő: [/B][/FONT][/COLOR][/SIZE]' + \
              '\n[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]\n\n',
     
-    'nr':    '[IMG]https://kepkuldes.com/images/26590e0284c27766c551bd01459e305c.png[/IMG]' + \
+    'nr':    '[IMG]https://i.postimg.cc/9ffvkK3V/lrsz-vonal-jelv-nnyel.png[/IMG]' + \
              '\n[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Egységszám: [/B][/FONT][/COLOR][/SIZE]' + \
              '\n[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]\n\n',
 
@@ -43,14 +43,14 @@ minta = {
             '\n[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz'
             '\ndate time[/SIZE][/I][/COLOR]\n\n',
 
-    'type': '[IMG]https://kepkuldes.com/images/26590e0284c27766c551bd01459e305c.png[/IMG]' + \
+    'type': '[IMG]https://i.postimg.cc/9ffvkK3V/lrsz-vonal-jelv-nnyel.png[/IMG]' + \
             '\n[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Repülés típusa: [/B][/FONT][/COLOR][/SIZE]' + \
             '\n[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]\n\n',
 
     'min':  '[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Repült percek: [/B][/FONT][/COLOR][/SIZE]' + \
             '\n[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE]\n\n',
 
-    'detail': '[IMG]https://kepkuldes.com/images/26590e0284c27766c551bd01459e305c.png[/IMG]' + \
+    'detail': '[IMG]https://i.postimg.cc/9ffvkK3V/lrsz-vonal-jelv-nnyel.png[/IMG]' + \
               '\n[SIZE=6][COLOR=rgb(128, 128, 128)][FONT=georgia][B] Légi járőrszolgálat részletes leírása: [/B][/FONT][/COLOR][/SIZE]' + \
               '\n[SIZE=5][COLOR=rgb(204, 204, 204)][I] Válasz [/I][/COLOR][/SIZE][/CENTER]\n\n',
 
@@ -67,7 +67,7 @@ loadmin = 'Nincs'
 
 #beolvassuk a filebol a dolgokat
 try:
-    with open('adatok.txt', 'r') as f:
+    with open('adatok.txt', 'r', encoding='utf8') as f:
         name = f.readline().strip()
         rank = f.readline().strip()
         occup = f.readline().strip()
@@ -130,13 +130,13 @@ def logiras(nev, rendfok, beoszt, pilota, masod, kisero, nr, start, end, type, m
 
 
     if nr == 'CH1':
-        lajstromszam = 'RB-077'
+        lajstromszam = 'RB-CH1'
         felszallashely = 'H1'
     elif nr == 'CH2':
-        lajstromszam = 'RB-078'
+        lajstromszam = 'RB-CH2'
         felszallashely = 'H2'
     elif nr == 'CH3':
-        lajstromszam = 'RB-065'
+        lajstromszam = 'RB-CH3'
         felszallashely = 'H3'
     else:
         var = 'Helytelen egységszám! Lehetséges értékek: "CH1", "CH2", "CH3". (Idézőjel nélkül)'
