@@ -1,11 +1,12 @@
 # majd kell jobb kommenteles, fontos megjegyezni való!!!
+# ja es az anime nem cringe csak rossz sztereotipiak terjednek a weebekrol, not my problem honestly
 # coded by WSD a román
 
 import PySimpleGUI as sg
 import webbrowser as wb
 import subprocess
 
-ver = '1.0alpha'
+ver = '1.1'
 
 colors = {'grey':'#23272a', 'green-b':'#3cb882', 'madebywsd':'#3c4043', 'green-b-not-available':'#8cb8a4'} # szinek :3
 
@@ -125,25 +126,29 @@ def calc():
     if '' not in (values['-INPUT_H_START-'], values['-INPUT_M_START-'], values['-INPUT_H_END-'], values['-INPUT_M_END-']): 
             #mw['-ERROR_LOG-'].update(visible=False) # alapbol is false, de ha hiva utan ujra kalkulaljuk es jo, akkor a logot tuntesse el
 
-            hs = values['-INPUT_H_START-'] # atnevezes a konnyebb kod kedveert
-            ms = values['-INPUT_M_START-'] # atnevezes a konnyebb kod kedveert
-            he = values['-INPUT_H_END-'] # atnevezes a konnyebb kod kedveert
-            me = values['-INPUT_M_END-'] # atnevezes a konnyebb kod kedveert
+            hourstart = values['-INPUT_H_START-'] # atnevezes a konnyebb kod kedveert
+            minutestart = values['-INPUT_M_START-'] # atnevezes a konnyebb kod kedveert
+            hourend = values['-INPUT_H_END-'] # atnevezes a konnyebb kod kedveert
+            minuteend = values['-INPUT_M_END-'] # atnevezes a konnyebb kod kedveert
 
             # ha minden fasza es minden szam, akkor megyunk tovabb csak
-            if hs.isnumeric() and ms.isnumeric() and he.isnumeric() and me.isnumeric():
+            if hourstart.isnumeric() and minutestart.isnumeric() and hourend.isnumeric() and minuteend.isnumeric():
                 # muveletek sorrendje itt kezdodik
                 # HA a befejezes kissebb mint a kezdes, akkor 24-bol kivonjuk a kezdest, atalakitjuk percbe a kapott idot, 
                 # majd a befejezest is atalakitjuk es egyszeruen hozzaadjuk
                 # faszer magyarazok ennyit bar jo ha tudom mit csinalok (sokszor thats not the case lmao)
                 # ja meg valamiert nem megy ha nem baszom az osszeset intre kinda szar
 
-                if he < hs:
-                    elsoresz = (24 - int(hs)) * 60 + int(ms)
-                    masodik = int(he) * 60 + int(me)
-                    result = elsoresz + masodik
+                if hourend < hourstart:
+
+                    perc_1 = 60-int(minutestart)
+                    hourstart_calc = int(hourstart) + 1
+                    diff = (24-hourstart_calc) + int(hourend)
+                    result = diff * 60 + perc_1 + int(minuteend)
+
+                    
                 else:
-                    result = (int(he) * 60 + int(me)) - (int(hs) * 60 + int(ms))
+                    result = (int(hourend) * 60 + int(minuteend)) - (int(hourstart) * 60 + int(minutestart))
 
                 if result < 0:
                     mw['-RESULT_TEXT-'].update(visible=False)
@@ -216,7 +221,7 @@ while True:
     # -------- ha invalid az idő, akkor törli meg ilyenek yk -------
     if '' not in (values['-INPUT_H_START-'], values['-INPUT_M_START-'], values['-INPUT_H_END-'], values['-INPUT_M_END-']): 
         if values['-INPUT_H_START-'].isnumeric() and values['-INPUT_M_START-'].isnumeric() and values['-INPUT_H_END-'].isnumeric() and values['-INPUT_M_END-'].isnumeric():
-            if int(values['-INPUT_H_START-']) > 24:
+            if int(values['-INPUT_H_START-']) > 23:
                 mw.Element('-INPUT_H_START-').Update('')
                 errorText('Hibás adat! Az óra nem lehet nagyobb 24-nél, a perc pedig 59-nél. A hibás mezők törölve lettek.')
                 mw['-RESULT_TEXT-'].update(visible=False)
@@ -228,7 +233,7 @@ while True:
                 mw['-RESULT_TEXT-'].update(visible=False)
                 mw['-CONGRAT_TEXT-'].update(visible=False)
 
-            if int(values['-INPUT_H_END-']) > 24:
+            if int(values['-INPUT_H_END-']) > 23:
                 mw.Element('-INPUT_H_END-').Update('')
                 errorText('Hibás adat! Az óra nem lehet nagyobb 24-nél, a perc pedig 59-nél. A hibás mezők törölve lettek.')
                 mw['-RESULT_TEXT-'].update(visible=False)
