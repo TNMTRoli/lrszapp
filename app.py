@@ -9,9 +9,7 @@ ver = '1.1'
 colors = {'grey':'#23272a', 'green-b':'#3cb882', 'madebywsd':'#3c4043', 'green-b-not-available':'#8cb8a4'} # szinek :3
 
 
-# a kalkulátornak a layoutja. két layout van, az egyik az amikor percet kalkulalsz, masik a jelentesiro
-# jelenlegi elmeletem szerint ugy lesz megoldva, hogy gomb nyomasra bezarjuk az ablakot, majd egy ujat hozunk letre a megfelelo layoutra. 
-# by default a kalkulator lesz
+# a kalkulátornak a layoutja.
 layoutCalculator = [
     # ----------------------------- FŐ, FELSŐ RÉSZ, Ő NEM FOG VÁLTOZNI MAJD -----------------------------
     [
@@ -131,11 +129,7 @@ def calc():
 
             # ha minden fasza es minden szam, akkor megyunk tovabb csak
             if hourstart.isnumeric() and minutestart.isnumeric() and hourend.isnumeric() and minuteend.isnumeric():
-                # muveletek sorrendje itt kezdodik
-                # HA a befejezes kissebb mint a kezdes, akkor 24-bol kivonjuk a kezdest, atalakitjuk percbe a kapott idot, 
-                # majd a befejezest is atalakitjuk es egyszeruen hozzaadjuk
-                # faszer magyarazok ennyit bar jo ha tudom mit csinalok (sokszor thats not the case lmao)
-                # ja meg valamiert nem megy ha nem baszom az osszeset intre kinda szar
+
 
                 if hourend < hourstart:
 
@@ -162,7 +156,7 @@ def calc():
                         f.write(str(result))
 
                     # based on milyen eredményeket ért el a csávó, megdícsérjük! Vagy nem!
-                    # előbb a textet beállítjuk úgy hogy látszódjon mert na. másképp yk nem igazán megy XD
+                    # előbb a textet beállítjuk úgy hogy látszódjon
                 mw['-CONGRAT_TEXT-'].update(visible=True)
                 if not rezultzero:
                     if result >= 0 and result <= 60:
@@ -245,7 +239,7 @@ while True:
 
     calc()
 
-    #húsvéti tojás UwU >_< XDDDDDDDDDDDDDD
+   
     if event == 'WSD':
         wb.open('https://i.postimg.cc/R069CSHg/unknown.png', 1, 1)
 
@@ -256,3 +250,4 @@ while True:
 
 
 mw.close()
+
